@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1440TIME Declaration</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        #declarationPopup { border: 1px solid #ccc; padding: 20px; margin-top: 20px; }
+        button { padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>1440TIME Truth Declaration</h1>
+    <button onclick="showDeclaration()">I'm Ready to Be Honest About My Time</button>
+
+    <div id="declarationPopup" style="display:none;">
+        <h2>Time Usage Truth Declaration</h2>
+        <p>I, <input type="text" id="userName">, admit that I have the time. I acknowledge that my real challenges are:</p>
+        <input type="checkbox" id="energy"> Lack of energy<br>
+        <input type="checkbox" id="will"> Lack of willpower<br>
+        <input type="checkbox" id="passion"> Lack of passion<br>
+        <input type="checkbox" id="desire"> Lack of desire<br>
+        <input type="checkbox" id="other"> Other: <input type="text" id="otherReason"><br>
+        <p>I commit to stop using "lack of time" as an excuse and to address my real barriers.</p>
+        <button onclick="makeDeclaration()">I Honestly Declare</button>
+    </div>
+
+    <script>
+    function showDeclaration() {
+        document.getElementById('declarationPopup').style.display = 'block';
+    }
+
+    function makeDeclaration() {
+        const name = document.getElementById('userName').value;
+        if(name) {
+            let reasons = [];
+            if(document.getElementById('energy').checked) reasons.push("lack of energy");
+            if(document.getElementById('will').checked) reasons.push("lack of willpower");
+            if(document.getElementById('passion').checked) reasons.push("lack of passion");
+            if(document.getElementById('desire').checked) reasons.push("lack of desire");
+            if(document.getElementById('other').checked) reasons.push(document.getElementById('otherReason').value);
+            
+            let message = `Thank you for your honesty, ${name}. You've acknowledged that your real challenges are ${reasons.join(", ")}. This awareness is the first step towards real change.`;
+            alert(message);
+            // Proceed to show calculator results (you would add this part)
+        } else {
+            alert("Please enter your name to make the declaration.");
+        }
+    }
+    </script>
+</body>
+</html>
